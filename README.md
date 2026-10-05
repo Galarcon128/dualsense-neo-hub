@@ -2,8 +2,8 @@
 
 Linux desktop companion for the [DualSense Neo driver](https://github.com/Galarcon128/dualsense-neo).
 The planned application installs and manages the driver and controls Bluetooth audio,
-microphone, haptics and lighting. This initial scaffold includes a manual, read-only
-connection check through the driver's versioned session D-Bus API.
+microphone, haptics and lighting. The initial API test panel reads the driver's
+versioned session D-Bus state and exposes all version 1 settings.
 
 ## Stack
 
@@ -80,6 +80,26 @@ device directly. Installation will reuse `packaging/dualsense-neo-setup`.
 
 Bluetooth pairing, service startup and audio routing remain explicit user actions.
 The Hub must not silently change the desktop's default audio output.
+
+## API test panel
+
+Run `bun run tauri dev` from a regular desktop user session to use the installed
+driver. Browser preview renders the panel but disables native controls.
+The panel queries `GetState` at startup, every two seconds and after each setting
+change. It shows service availability, controller connection, child process state,
+`pending`, and the raw state JSON. If the service is unavailable, it disables
+settings and retries on the next poll.
+
+Audio, microphone, haptics and lights have enable toggles. Audio, haptics and
+lights have 0–100 level sliders with explicit Apply buttons. Lights also offer
+all four modes and a stored fixed RGB color with an Apply color button.
+Controls remain available when the service responds but the controller is
+disconnected. Displayed values represent requested configuration; `pending`
+indicates that the child has not applied it yet. Changes can interrupt audio
+briefly, and settings reset when the daemon restarts.
+
+Native calls are restricted to reading state and a typed, validated setting
+command. This panel does not install the driver or manage the user service.
 
 ## Next steps
 

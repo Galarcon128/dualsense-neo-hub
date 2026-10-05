@@ -20,3 +20,26 @@ button:disabled { opacity: .55; cursor: default; }
 button:focus-visible { outline: 3px solid white; outline-offset: 4px; }
 .error { color: #ffb7bd; overflow-wrap: anywhere; }
 .footnote { font-size: .875rem; }
+.container { padding-top: 32px; }
+.card { margin: 16px 0; }
+.controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.controls .card { margin: 0; }
+.section-heading, .input-row { display: flex; align-items: center; gap: 12px; }
+.section-heading { justify-content: space-between; }
+.section-heading h2 { margin: 0; }
+button { margin-top: 0; }
+fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+.toggle { display: flex; align-items: center; gap: 8px; }
+input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--accent); }
+.level { margin-top: 20px; }
+.level label { display: block; margin-bottom: 8px; }
+.level span, .hint { color: #abb7ce; font-size: .85rem; line-height: 1.5; }
+input[type="range"] { flex: 1; min-width: 0; accent-color: var(--accent); }
+input[type="color"] { width: 48px; height: 36px; padding: 2px; background: transparent; border: 1px solid #61708d; }
+select { display: block; width: 100%; margin-top: 8px; padding: 10px; background: #101521; color: inherit; border: 1px solid #61708d; border-radius: 6px; font: inherit; }
+label[for="light-mode"] { display: block; margin-top: 20px; }
+.notice { color: #f4d898; line-height: 1.5; }
+pre { overflow: auto; font-size: .85rem; line-height: 1.6; }
+summary { cursor: pointer; }
+input:focus-visible, select:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+@media (max-width: 680px) { .controls { grid-template-columns: 1fr; } .container { padding: 24px 16px; } .card { padding: 20px; } }
