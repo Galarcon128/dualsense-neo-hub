@@ -1,0 +1,22 @@
+:root {
+  font-family: Inter, system-ui, sans-serif;
+  color: #e8edf8;
+  background: #101521;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  --accent: #9eb6ff;
+}
+* { box-sizing: border-box; }
+body { margin: 0; }
+.container { max-width: 900px; margin: 0 auto; padding: 64px 32px; }
+.eyebrow { color: var(--accent); font-size: .75rem; letter-spacing: .15em; }
+h1 { font-size: clamp(2rem, 5vw, 3rem); margin: 12px 0; }
+header > p:last-child, .footnote { color: #abb7ce; line-height: 1.6; }
+.card { margin: 36px 0 20px; padding: 28px; border: 1px solid #33405a; border-radius: 18px; background: #192235; }
+h2 { margin-top: 0; font-size: 1.25rem; }
+button { margin-top: 12px; padding: 12px 18px; border: 0; border-radius: 9px; background: var(--accent); color: #101521; font: inherit; font-weight: 600; cursor: pointer; }
+button:disabled { opacity: .55; cursor: default; }
+button:focus-visible { outline: 3px solid white; outline-offset: 4px; }
+.error { color: #ffb7bd; overflow-wrap: anywhere; }
+.footnote { font-size: .875rem; }
