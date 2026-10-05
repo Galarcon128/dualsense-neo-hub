@@ -15,8 +15,7 @@ connection check through the driver's versioned session D-Bus API.
 
 ## Development
 
-GitHub repository creation and the initial push are pending authentication/network
-access. The clone command below describes the intended remote once published.
+The public repository is [Galarcon128/dualsense-neo-hub](https://github.com/Galarcon128/dualsense-neo-hub).
 
 Install Bun, Rust and the [Tauri Linux prerequisites](https://v2.tauri.app/start/prerequisites/),
 including GTK 3 and WebKitGTK 4.1 development packages.
@@ -24,7 +23,7 @@ including GTK 3 and WebKitGTK 4.1 development packages.
 ```sh
 git clone --recurse-submodules https://github.com/Galarcon128/dualsense-neo-hub.git
 cd dualsense-neo-hub
-bun install
+bun install --frozen-lockfile
 bun run dev          # browser preview; native driver access requires Tauri
 bun run tauri dev    # desktop application
 ```
@@ -46,9 +45,21 @@ cargo check --manifest-path src-tauri/Cargo.toml
 bun run tauri build --bundles deb
 ```
 
-Commit the generated `bun.lock` and `src-tauri/Cargo.lock` after the first successful
-dependency installation. Initial workspace setup could not resolve dependencies
-because network access was restricted; compilation has not yet been validated.
+Dependency versions are pinned in `bun.lock` and `src-tauri/Cargo.lock`.
+Use `bun install --frozen-lockfile` and
+`cargo check --locked --manifest-path src-tauri/Cargo.toml` to verify the committed
+dependency resolution.
+
+### Workspace validation
+
+Validation on October 4, 2026 used Linux Mint 22.3, Bun 1.4.2 and Cargo 1.97.0,
+with GTK 3.24.41 and WebKitGTK 2.52.6 available through pkg-config.
+Frontend dependency installation, TypeScript checking and the Vite production
+build passed. Rust formatting and `cargo check --manifest-path src-tauri/Cargo.toml`
+also passed.
+
+These checks do not validate the desktop GUI, live driver D-Bus communication,
+controller hardware, or Debian packaging. Distribution support remains provisional.
 
 ## Driver submodule
 
